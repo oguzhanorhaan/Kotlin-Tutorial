@@ -2,6 +2,7 @@ package global.oguzhanorhan.mvvmsample.ui.auth
 
 import android.view.View
 import androidx.lifecycle.ViewModel
+import global.oguzhanorhan.mvvmsample.data.repositories.UserRepository
 
 open class AuthViewModel : ViewModel() {
     var email: String? = null
@@ -16,7 +17,8 @@ open class AuthViewModel : ViewModel() {
             //todo: show alert
             return
         }
-        authListener?.onSuccess()
+        val loginResponse = UserRepository().userLogin(email!!, password!!)
+        authListener?.onSuccess(loginResponse)
 
     }
 }

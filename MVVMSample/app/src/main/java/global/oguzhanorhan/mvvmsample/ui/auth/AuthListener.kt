@@ -1,7 +1,9 @@
 package global.oguzhanorhan.mvvmsample.ui.auth
 
+import androidx.lifecycle.LiveData
+
 interface AuthListener {
     fun onStarted()
-    fun onSuccess()
+    fun onSuccess(value: LiveData<String>)
     fun onFailure(message: String)
 }
