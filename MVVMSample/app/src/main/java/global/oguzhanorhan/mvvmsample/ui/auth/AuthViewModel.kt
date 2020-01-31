@@ -6,7 +6,9 @@ import global.oguzhanorhan.mvvmsample.data.repositories.UserRepository
 import global.oguzhanorhan.mvvmsample.utils.ApiException
 import global.oguzhanorhan.mvvmsample.utils.CoroutinesUtil
 
-open class AuthViewModel : ViewModel() {
+open class AuthViewModel(
+    private val  repository: UserRepository
+) : ViewModel() {
     var email: String? = null
     var password: String? = null
 
@@ -16,15 +18,15 @@ open class AuthViewModel : ViewModel() {
         authListener?.onStarted()
         if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
             authListener?.onFailure("Username or password is empty")
-            //todo: show alert
             return
         }
 
         CoroutinesUtil.main {
             try {
-                val authResponse = UserRepository().userLogin(email!!, password!!)
+                val authResponse = repository.userLogin(email!!, password!!)
                 authResponse.user?.let {
                     authListener?.onSuccess(it)
+                    repository.saveUserToDb(it)
                     return@main
                 }
                 authListener?.onFailure(authResponse.message!!)
@@ -33,8 +35,8 @@ open class AuthViewModel : ViewModel() {
                 authListener?.onFailure(e.message!!)
             }
         }
-
-
-
     }
+
+      fun getUserLoggedIn() = repository.getUser()
+
 }
