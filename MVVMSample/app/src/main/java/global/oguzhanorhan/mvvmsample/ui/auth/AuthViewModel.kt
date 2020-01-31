@@ -3,6 +3,8 @@ package global.oguzhanorhan.mvvmsample.ui.auth
 import android.view.View
 import androidx.lifecycle.ViewModel
 import global.oguzhanorhan.mvvmsample.data.repositories.UserRepository
+import global.oguzhanorhan.mvvmsample.utils.ApiException
+import global.oguzhanorhan.mvvmsample.utils.CoroutinesUtil
 
 open class AuthViewModel : ViewModel() {
     var email: String? = null
@@ -17,8 +19,22 @@ open class AuthViewModel : ViewModel() {
             //todo: show alert
             return
         }
-        val loginResponse = UserRepository().userLogin(email!!, password!!)
-        authListener?.onSuccess(loginResponse)
+
+        CoroutinesUtil.main {
+            try {
+                val authResponse = UserRepository().userLogin(email!!, password!!)
+                authResponse.user?.let {
+                    authListener?.onSuccess(it)
+                    return@main
+                }
+                authListener?.onFailure(authResponse.message!!)
+            }
+            catch (e: ApiException) {
+                authListener?.onFailure(e.message!!)
+            }
+        }
+
+
 
     }
 }
