@@ -18,6 +18,11 @@ interface MyAPI {
     @POST("login")
     suspend fun userLogin(@Field("email") email: String, @Field("password") password: String) : Response<AuthResponse>
 
+    @FormUrlEncoded
+    @POST("signup")
+    suspend fun userSignup( @Field("name") name: String, @Field("email") email: String, @Field("password") password: String
+    ) : Response<AuthResponse>
+
     companion object{
         //example based on simplified coding's API
         operator fun invoke(networkConnectionInterceptor: NetworkConnectionInterceptor) : MyAPI {
