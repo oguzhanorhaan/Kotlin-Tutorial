@@ -12,6 +12,7 @@ import global.oguzhanorhan.mvvmsample.R
 import global.oguzhanorhan.mvvmsample.data.db.AppDatabase
 import global.oguzhanorhan.mvvmsample.data.db.entities.User
 import global.oguzhanorhan.mvvmsample.data.network.MyAPI
+import global.oguzhanorhan.mvvmsample.data.network.NetworkConnectionInterceptor
 import global.oguzhanorhan.mvvmsample.data.repositories.UserRepository
 import global.oguzhanorhan.mvvmsample.databinding.ActivityLoginBinding
 import global.oguzhanorhan.mvvmsample.ui.general.HomeActivity
@@ -23,7 +24,9 @@ class LoginActivity : AppCompatActivity(), AuthListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val api = MyAPI()
+        //todo: handle with dependency injection
+        val networkConnectionInterceptor = NetworkConnectionInterceptor(this)
+        val api = MyAPI(networkConnectionInterceptor)
         val db = AppDatabase(this)
         val repository = UserRepository(api, db)
         val factory = AuthViewModelFactory(repository)

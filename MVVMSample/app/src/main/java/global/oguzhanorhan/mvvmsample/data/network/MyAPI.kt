@@ -1,6 +1,7 @@
 package global.oguzhanorhan.mvvmsample.data.network
 
 import global.oguzhanorhan.mvvmsample.data.network.responses.AuthResponse
+import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.CallAdapter
@@ -19,8 +20,14 @@ interface MyAPI {
 
     companion object{
         //example based on simplified coding's API
-        operator fun invoke() : MyAPI {
+        operator fun invoke(networkConnectionInterceptor: NetworkConnectionInterceptor) : MyAPI {
+
+            val okHttpClient = OkHttpClient.Builder()
+                .addInterceptor(networkConnectionInterceptor)
+                .build()
+
             return Retrofit.Builder()
+                .client(okHttpClient)
                 .baseUrl("https://api.simplifiedcoding.in/course-apis/mvvm/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
