@@ -40,7 +40,7 @@ Main -> for doing things on main thread and interacting with UI
 	{   
 	  	//timeout message  
 	}  
-}   ```
+ 
 ---  
 #### LiveData
 - Ensures your UI matches your data state,
