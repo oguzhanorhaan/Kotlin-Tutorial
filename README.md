@@ -6,7 +6,13 @@ Includes my Kotlin syntax notes
 ![Kotlin-Tutorial](weather.gif)
   
 - Movies project demonsrates usages of RxJava, RxAndroid and Retrofit together in Kotlin.
-![Kotlin-Tutorial](third.gif)
+![Kotlin-Tutorial](third.gif)  
+
+- andfun_kotlin-android-trivia-starter-code app   for lesson 3 of the [Android App Development in Kotlin course on Udacity](https://www.udacity.com/course/developing-android-apps-with-kotlin--ud9012).
+
+The Android Trivia application is an application that asks the user trivia questions about Android development.  It makes use of the Navigation component within Jetpack to move the user between different screens.  Each screen is implemented as a Fragment.
+The app navigates using buttons, the Action Bar, and the Navigation Drawer.
+
   
  ## Coroutines notes:  
  #### Why Kotlin Coroutines?  
