@@ -74,4 +74,7 @@ The app navigates using buttons, the Action Bar, and the Navigation Drawer.
 - **Explicit Intents** -> Explicit intent is used to launch an activity using the name of the target activity class and they are typically used to launch other activities within your application.  
 - **Implicit Intents** -> Implicit  intents provide an abstract description of the operation to be performed  and they most often are used to launch activities that are exposed by other applications.  
 Implicitly launched activities require an intent-filter. An intent-filter used to expose that your activity can respond to an implicit intent with a certain action category and/or type.  
-- **SafeArgs Plugin** is a Gradle Plugin that generates code to help guarantee that the arguments on both side matches up while also simplifying argument passing.
+- **SafeArgs Plugin** is a Gradle Plugin that generates code to help guarantee that the arguments on both side matches up while also simplifying argument passing.  
+**What are advantages we get from using safe arguments?**    
+We get type safety, as navigation generates the action and the argument class from the navigation graph.  
+We get argument enforcement, as non-default arguments are required parameters in the action.
