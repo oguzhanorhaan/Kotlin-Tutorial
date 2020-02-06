@@ -49,6 +49,7 @@ The app navigates using buttons, the Action Bar, and the Navigation Drawer.
  
 ---  
 #### LiveData
+- An observable data holder class that is lifecycle-aware  
 - Ensures your UI matches your data state,
 - LiveData follows observer pattern
 - LiveData notifies Observes when lifecycle state changes
