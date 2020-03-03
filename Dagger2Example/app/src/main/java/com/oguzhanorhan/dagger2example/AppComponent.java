@@ -8,5 +8,7 @@ import dagger.Component;
 @Component(modules = DriverModule.class)
 public interface AppComponent {
 
-    Driver getDriver();
+   // Driver getDriver();
+
+    ActivityComponent.Builder getActivityyComponentBuilder();
 }

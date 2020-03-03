@@ -32,11 +32,23 @@ public class MainActivity extends AppCompatActivity {
 
        // ActivityComponent component = ((DaggerApplication) getApplication()).getCarComponent();
 
-        ActivityComponent component = DaggerActivityComponent.builder() // Activity component creates local singletons
+      /*  ActivityComponent component = DaggerActivityComponent.builder() // Activity component creates local singletons
                 .horsePower(120)
                 .engineCapacity(1600)
                 .appComponent(((DaggerApplication) getApplication()).getAppComponent()) // App component creates app singletons
-                .build();
+                .build();*/
+
+     /* ActivityComponent component = ((DaggerApplication) getApplication())
+              .getAppComponent()
+              .getActivityComponent(new DieselEngineModule(110));*/
+
+
+     ActivityComponent component =  ((DaggerApplication) getApplication())
+             .getAppComponent()
+             .getActivityyComponentBuilder()
+             .horsePower(170)
+             .engineCapacity(1700)
+             .build();
 
         component.inject(this);
 

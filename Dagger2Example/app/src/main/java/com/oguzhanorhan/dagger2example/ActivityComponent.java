@@ -7,19 +7,23 @@ import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
+import dagger.Subcomponent;
 
-/*
-* To use the driver object of the AppComponent, we defined it as a dependency
-* */
+
 @PerActivity
+/*
+ * To use the driver object of the AppComponent, we defined it as a dependency
+ *
 @Component(dependencies = AppComponent.class ,modules = {WheelModule.class, PetrolEngineModule.class})
+*/
+@Subcomponent(modules = {WheelModule.class, PetrolEngineModule.class})
 public interface ActivityComponent {
 
     Car getCar();
 
     void inject(MainActivity mainActivity);
 
-    @Component.Builder
+    @Subcomponent.Builder
     interface Builder {
 
         @BindsInstance
@@ -28,7 +32,6 @@ public interface ActivityComponent {
         @BindsInstance
         Builder engineCapacity(@Named("engine capacity") int engineCapacity);
 
-        Builder appComponent(AppComponent component);
 
         ActivityComponent build();
     }
