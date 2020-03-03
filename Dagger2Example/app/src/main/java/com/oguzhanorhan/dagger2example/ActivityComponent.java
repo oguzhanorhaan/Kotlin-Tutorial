@@ -8,9 +8,12 @@ import javax.inject.Singleton;
 import dagger.BindsInstance;
 import dagger.Component;
 
-@Singleton
-@Component(modules = {WheelModule.class, PetrolEngineModule.class})
-public interface CarComponent {
+/*
+* To use the driver object of the AppComponent, we defined it as a dependency
+* */
+@PerActivity
+@Component(dependencies = AppComponent.class ,modules = {WheelModule.class, PetrolEngineModule.class})
+public interface ActivityComponent {
 
     Car getCar();
 
@@ -25,6 +28,8 @@ public interface CarComponent {
         @BindsInstance
         Builder engineCapacity(@Named("engine capacity") int engineCapacity);
 
-        CarComponent build();
+        Builder appComponent(AppComponent component);
+
+        ActivityComponent build();
     }
 }
