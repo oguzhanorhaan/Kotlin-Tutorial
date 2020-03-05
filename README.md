@@ -67,7 +67,9 @@ Dependency Injection is one of the application forms of Inversion of Control.
 - Loosely coupled code
 - Easy testing
 - Classes are not directly dependent on each other  
+
 **Types of dependency injection and creation order of injection types** :  
+
 Constructor Injection  
 
 Field Injection  
