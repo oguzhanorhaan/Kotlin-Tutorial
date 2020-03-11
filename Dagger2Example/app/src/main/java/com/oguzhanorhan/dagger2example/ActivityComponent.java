@@ -36,4 +36,3 @@ public interface ActivityComponent {
         ActivityComponent build();
     }
 }
-  
