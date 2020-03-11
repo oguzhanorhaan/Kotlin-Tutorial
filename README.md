@@ -58,9 +58,26 @@ The app navigates using buttons, the Action Bar, and the Navigation Drawer.
 
 --- 
 #### Dependency Injection  
+**Inversion of Control**  = The object you depend on in method or class is not created. In its place comes the object, which is dependent on the outside ready. setCake(cake).  
+Dependency Injection is one of the application forms of Inversion of Control.  
+**Service Locator:** Service Locator can be thought as a kind of Factory, Abstract Factory design pattern. Depended object achieved from Service Locator. Libraries like **Kodein, Koin** can be thought as service locator.  
+**Dagger 2**: Dagger2 is a dependency injection framework. Dagger2 creates dependency graph at compile time by using annotations and we can obtain errors at compile-time if to much dependencies and classes are in a mess.  
+
+
 - Loosely coupled code
 - Easy testing
 - Classes are not directly dependent on each other  
+
+**Types of dependency injection and creation order of injection types** :  
+
+Constructor Injection  
+
+Field Injection  
+
+Method Inject  
+
+Field and method injection are only automatically executed if we also do a constructor injection.
+
 ---   
 #### Other Notes 
 - **@Volatile** annotation means this variable immediately visible to all the threads  
@@ -78,4 +95,19 @@ Implicitly launched activities require an intent-filter. An intent-filter used t
 - **SafeArgs Plugin** is a Gradle Plugin that generates code to help guarantee that the arguments on both side matches up while also simplifying argument passing.  
 **What are advantages we get from using safe arguments?**    
 We get type safety, as navigation generates the action and the argument class from the navigation graph.  
-We get argument enforcement, as non-default arguments are required parameters in the action.
+We get argument enforcement, as non-default arguments are required parameters in the action.  
+
+---   
+#### Room Database  
+
+- Redefine each entity as a data class and the interactions as a interface and then we use annotations to add metadata to both and Room uses these annotated classes to create tables in the db and queries that act on the db.  
+
+- Room is perfect for offline cache.  
+
+- Data Transfer Objects objects for parsing from network. We separate them from Domain Objects because they contain extra  logic for parsing network results that’s not relevant to what they represent.   
+- Domain Objects are the data that our app uses internally. We don’t ever share them over the network or to the database . This way the server can completely change its result without impacting the internal working of our app.  
+
+- It is a good practice to separate DTOs and DOs, this is an example of separation of concerns by keeping them separate we are easily able to change any of them without impacting our app’s entire code.  
+
+
+
