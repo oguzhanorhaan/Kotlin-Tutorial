@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.oguzhanorhan.dagger2codingwithmitchtutorial">
 
+
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".BaseApplication"
         android:allowBackup="false"
@@ -12,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AuthActivity">
+        <activity android:name=".ui.auth.AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
