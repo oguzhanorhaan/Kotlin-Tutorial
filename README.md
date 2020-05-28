@@ -82,6 +82,12 @@ Field and method injection are only automatically executed if we also do a const
 #### Other Notes 
 - **@Volatile** annotation means this variable immediately visible to all the threads  
 - “Unit" in Kotlin is equivalent of "void" in Java.  
+- Sealed class defines a closed type. That means all subclasses of data item must be defined in this file. As a result, number of subclasses is known to the compiler and it’s not possible for another part of yourcode to define a new type of data item. Sealed classes can be thought an extended version of Enums. It handles lots of things compared to enums. Sealed classes are abstract and can not be instantiated directly.  
+- **DiffUtil:**  Helper for RecyclerView Adapters that calculates differences changes in lists and minimizes modifications.   
+- Scoping: Like telling to the object “you are able to exist in desired actives, fragments or components, that can be whole app or a particular parts, if that parts die, you die”.  
+- data class: generates getter, setter, equals(), toString(), hashCode() ... methods automatically and provides clean look.  
+- **Immutable variable** is one whose value cannot be changed, also known as unchangeable or read-only variable (ex: val). On the other hand the value of the **mutable variable** can be changed (ex: var).
+
 ---   
 #### Navigation Architecture  
 - **Navigation Graph**: The part where we can visualize and edit all the navigations that can be done in the application, even the possible routes that the user can take.
